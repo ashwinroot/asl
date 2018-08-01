@@ -45,7 +45,7 @@ class ASLPredictor:
         probabilities = self.model.predict_generator(test_generator,steps=nb_samples,verbose=1)
         y_classes = probabilities.argmax(axis=-1)
         for x,y in zip(filenames,y_classes):
-            print(x + "-> " + y)
+            print(x + "-> " + str(y))
     
 
 c = ASLPredictor()
