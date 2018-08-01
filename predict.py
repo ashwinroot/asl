@@ -24,15 +24,18 @@ class ASLPredictor:
         print("Loaded model from disk")
     
     def predict(self):
-        image_dir = "input/asl_alphabet_test/A_test.jpg"
-        img = image.load_img(image_dir, target_size=target_size)
-        print(np.array(img).shape)
-        img = np.reshape(np.array(img),target_dims)
-        # data_augmentor = ImageDataGenerator(samplewise_center=True, 
-        #                             samplewise_std_normalization=True, 
-        #                             validation_split=val_frac)
-        # test_generator = data_augmentor.flow_from_directory(image_dir, target_size=target_size, batch_size=batch_size, shuffle=False,class_mode=None)
-        probabilities = self.model.predict_classes(img)
+        image_dir = "input/asl_alphabet_test"
+        # img = image.load_img(image_dir, target_size=target_size)
+        # test_datagen = ImageDataGenerator(rescale=1./255)
+        # test_generator = test_datagen.flow_from_directory(test_dir,target_size=target_size,color_mode="rgb",
+        # shuffle = False,
+        # class_mode='categorical',
+        # batch_size=1)
+        data_augmentor = ImageDataGenerator()
+        test_generator = data_augmentor.flow_from_directory(image_dir, target_size=target_size, batch_size=batch_size, shuffle=False,class_mode='categorical')
+        filenames = test_generator.filenames
+        nb_samples = len(filenames)     
+        probabilities = self.model.predict_generator(np.array(img),steps=nb_samples)
     
 
 c = ASLPredictor()
