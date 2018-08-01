@@ -42,7 +42,7 @@ class ASLPredictor:
         filenames = test_generator.filenames
         nb_samples = len(filenames) 
         print("testing : " + str(nb_samples))    
-        probabilities = self.model.predict_generator(np.array(img),steps=nb_samples,verbose=1)
+        probabilities = self.model.predict_generator(test_generator,steps=nb_samples,verbose=1)
         y_classes = probabilities.argmax(axis=-1)
         for x,y in zip(filenames,y_classes):
             print(x + "-> " + y)
