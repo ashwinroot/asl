@@ -23,13 +23,12 @@ class ASLPredictor:
         print("Loaded model from disk")
     
     def predict(self):
-        image_dir = "input/asl_alphabet_test/A_test.jpg"
-        img = image.load_img(image_dir, target_size=target_dims)
-        print(img)
-        # data_augmentor = ImageDataGenerator(samplewise_center=True, 
-                                    # samplewise_std_normalization=True, 
-                                    # validation_split=val_frac)
-        # test_generator = data_augmentor.flow_from_directory(image_dir, target_size=target_size, batch_size=batch_size, shuffle=False)
+        image_dir = "input/asl_alphabet_test"
+        # img = image.load_img(img_dir, target_size=target_size)
+        data_augmentor = ImageDataGenerator(samplewise_center=True, 
+                                    samplewise_std_normalization=True, 
+                                    validation_split=val_frac)
+        test_generator = data_augmentor.flow_from_directory(image_dir, target_size=target_size, batch_size=batch_size, shuffle=False,class_mode=None)
         probabilities = self.model.predict(img)
     
 
