@@ -29,7 +29,7 @@ class ASLPredictor:
                                     samplewise_std_normalization=True, 
                                     validation_split=val_frac)
         test_generator = data_augmentor.flow_from_directory(image_dir, target_size=target_size, batch_size=batch_size, shuffle=False,class_mode=None)
-        probabilities = self.model.predict(img)
+        probabilities = self.model.predict_generator(test_generator)
     
 
 c = ASLPredictor()
