@@ -23,11 +23,12 @@ class ASLPredictor:
     
     def predict(self):
         image_dir = "input/asl_alphabet_test"
-        data_augmentor = ImageDataGenerator(samplewise_center=True, 
-                                    samplewise_std_normalization=True, 
-                                    validation_split=val_frac)
-        test_generator = data_augmentor.flow_from_directory(image_dir, target_size=target_size, batch_size=batch_size, shuffle=False)
-        probabilities = self.model.predict_generator(test_generator)
+        img = image.load_img(img_dir, target_size=target_size)
+        # data_augmentor = ImageDataGenerator(samplewise_center=True, 
+                                    # samplewise_std_normalization=True, 
+                                    # validation_split=val_frac)
+        # test_generator = data_augmentor.flow_from_directory(image_dir, target_size=target_size, batch_size=batch_size, shuffle=False)
+        probabilities = self.model.predict(img)
     
 
 c = ASLPredictor()
