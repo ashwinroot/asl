@@ -44,7 +44,7 @@ class ASLPredictor:
         # nb_samples = len(filenames) 
         # print("testing : " + str(nb_samples))  
         img = image.load_img(image_dir,target_size=(64,64,3))  
-        img = np.asarray(np.resize(img,(64,64,3)))
+        img = np.asarray(np.resize(img,(1,64,64,3)))
         probabilities = self.model.predict(img)
         print(probabilities)
         y_classes = probabilities.argmax(axis=-1)
