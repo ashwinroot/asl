@@ -36,7 +36,7 @@ class ASLPredictor:
         filenames = test_generator.filenames
         nb_samples = len(filenames) 
         print("testing : " + str(nb_samples))    
-        probabilities = self.model.predict_generator(np.array(img),steps=nb_samples)
+        probabilities = self.model.predict_generator(test_generator,steps=nb_samples)
         print(probabilities)
     
 
