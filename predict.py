@@ -41,7 +41,7 @@ class ASLPredictor:
         test_generator = data_augmentor.flow_from_directory(image_dir, target_size=target_size, batch_size=batch_size, shuffle=False,class_mode='categorical')
         filenames = test_generator.filenames
         nb_samples = len(filenames) 
-        print("testing : " + nb_samples)    
+        print("testing : " + str(nb_samples))    
         probabilities = self.model.predict_generator(np.array(img),steps=nb_samples,verbose=1)
         y_classes = probabilities.argmax(axis=-1)
         for x,y in zip(filenames,y_classes):
