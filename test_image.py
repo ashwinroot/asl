@@ -26,7 +26,7 @@ class ASLPredictor:
         print("Loaded model from disk")
     
     def predict(self):
-        image_dir = "input/asl_alphabet_test/test/A_test.jpg "
+        image_dir = "input/asl_alphabet_test/test/A_test.jpg"
         # img = image.load_img(image_dir, target_size=target_size)
         # test_datagen = ImageDataGenerator(rescale=1./255)
         # test_generator = test_datagen.flow_from_directory(test_dir,target_size=target_size,color_mode="rgb",
