@@ -26,7 +26,7 @@ class ASLPredictor:
     def predict(self):
         image_dir = "input/asl_alphabet_test/A_test.jpg"
         img = image.load_img(image_dir, target_size=target_size)
-        img = np.reshape(np.array(img),target_dims)
+        img = np.reshape(np.array(img),(64,64,3,1))
         # data_augmentor = ImageDataGenerator(samplewise_center=True, 
         #                             samplewise_std_normalization=True, 
         #                             validation_split=val_frac)
