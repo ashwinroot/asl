@@ -3,6 +3,7 @@ from keras.layers import Conv2D, Dense, Dropout, Flatten
 from keras.models import Sequential
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import model_from_json
+from keras.preprocessing import image
 
 target_size = (64, 64)
 target_dims = (64, 64, 3) # add channel for RGB
