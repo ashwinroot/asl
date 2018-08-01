@@ -22,6 +22,7 @@ class ASLPredictor:
         self.model = model_from_json(loaded_model_json)
         # load weights into new model
         self.model.load_weights("model.h5")
+        self.model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=["accuracy"])
         print("Loaded model from disk")
     
     def predict(self):
