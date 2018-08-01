@@ -23,7 +23,7 @@ class ASLPredictor:
         print("Loaded model from disk")
     
     def predict(self):
-        image_dir = "input/asl_alphabet_test"
+        image_dir = "input/asl_alphabet_test/A_test.jpg"
         img = image.load_img(img_dir, target_size=target_size)
         # data_augmentor = ImageDataGenerator(samplewise_center=True, 
                                     # samplewise_std_normalization=True, 
