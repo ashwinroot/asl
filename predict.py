@@ -6,6 +6,7 @@ from keras.models import model_from_json
 from keras.preprocessing import image
 import numpy as np
 
+data_dir = "input/asl_alphabet_train"
 target_size = (64, 64)
 target_dims = (64, 64, 3) # add channel for RGB
 n_classes = 29
