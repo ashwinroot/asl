@@ -16,12 +16,12 @@ batch_size = 64
 class ASLPredictor:
     def __init__(self):
         # load json and create model
-        json_file = open('mode.json', 'r')
+        json_file = open('model_self.json', 'r')
         loaded_model_json = json_file.read()
         json_file.close()
         self.model = model_from_json(loaded_model_json)
         # load weights into new model
-        self.model.load_weights("model.h5")
+        self.model.load_weights("model_self.h5")
         self.model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=["accuracy"])
         print("Loaded model from disk")
     
