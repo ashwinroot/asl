@@ -38,8 +38,8 @@ class ASLPredictor:
         print("testing : " + str(nb_samples))    
         probabilities = self.model.predict_generator(test_generator,steps=nb_samples)
         print(probabilities)
-        for prob in probabilities:
-          print(np.argmax(prob))
+        print(probabilities.shape)
+        y_classes = probabilities.argmax(axis=-1)
     
 
 c = ASLPredictor()
