@@ -20,7 +20,7 @@ def classify():
     asl = ASLPredictor()
     letter = asl.predictor(img)
     response = json.dumps({'message':letter})
-    return Response(response=response, status=200, mimetype="application/json")
+    return response
 
     
 

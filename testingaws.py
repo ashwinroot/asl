@@ -14,6 +14,6 @@ def post_image(img_file):
     response = requests.post(URL, data=img, headers=headers)
     return response
 
-post_image("asl-alphabet/asl_alphabet_test/A_test.jpg")
+print(json.loads(post_image("asl-alphabet/asl_alphabet_test/A_test.jpg")))
 
 
