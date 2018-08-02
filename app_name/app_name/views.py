@@ -18,7 +18,7 @@ def classify():
     nparr = np.fromstring(r.data, np.uint8)
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     asl = ASLPredictor()
-    letter = asl.predict(img)
+    letter = asl.predictor(img)
     response = json.dumps({'message':letter})
     return Response(response=response, status=200, mimetype="application/json")
 

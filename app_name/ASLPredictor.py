@@ -30,22 +30,6 @@ class ASLPredictor:
     
     def predict(self):
         image_dir = "input/asl_alphabet_test/test"
-        # img = image.load_img(image_dir, target_size=target_size)
-        # test_datagen = ImageDataGenerator(rescale=1./255)
-        # test_generator = test_datagen.flow_from_directory(test_dir,target_size=target_size,color_mode="rgb",
-        # shuffle = False,
-        # class_mode='categorical',
-        # batch_size=1)
-        # data_augmentor = ImageDataGenerator()
-        # train_generator = data_augmentor.flow_from_directory(data_dir, target_size=target_size, batch_size=batch_size, shuffle=True)
-        # label_map = (train_generator.class_indices) 
-        # print("Labels are ")
-        # print(label_map)
-        
-        # test_generator = data_augmentor.flow_from_directory(image_dir, target_size=target_size, batch_size=batch_size, shuffle=False,class_mode='categorical')
-        # filenames = test_generator.filenames
-        # nb_samples = len(filenames) 
-        # print("testing : " + str(nb_samples))  
         for image_files in os.listdir(image_dir):
            image = cv2.imread(image_dir + '/' + image_files)
            if image is not None:
@@ -54,7 +38,7 @@ class ASLPredictor:
             y_classes = probabilities.argmax(axis=-1)
             print(image_files + "-> "+str(y_classes))
 
-    def predict(self,image):
+    def predictor(self,image):
         img = np.asarray(np.resize(image,(1,64,64,3)))
         probabilities = self.model.predict(img)
         y_class = probabilities.argmax(axis=-1)[0]
