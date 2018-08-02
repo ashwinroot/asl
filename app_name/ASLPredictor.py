@@ -25,7 +25,7 @@ class ASLPredictor:
         # load weights into new model
         self.model.load_weights("models/self/model_self.h5")
         self.model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=["accuracy"])
-        self.labels = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8,'J': 9, 'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25, 'del': 26, 'nothing': 27, 'space': 28}
+        self.labels = {'0': 'A', '1': 'B', '2': 'C', '3': 'D', '4': 'E', '5': 'F', '6': 'G', '7': 'H', '8': 'I','9': 'J', '10': 'K', '11': 'L', '12': 'M', '13': 'N', '14': 'O', '15': 'P', '16': 'Q', '17': 'R', '18': 'S', '19': 'T', '20': 'U', '21': 'V', '22': 'W', '23': 'X', '24': 'W', '25': 'Z', '26': 'de', '27': 'nothing', '28': ' '}
         print("Loaded model from disk")
     
     def predict(self):
@@ -42,6 +42,6 @@ class ASLPredictor:
         img = np.asarray(np.resize(image,(1,64,64,3)))
         probabilities = self.model.predict(img)
         y_class = probabilities.argmax(axis=-1)[0]
-        return str(self.labels[y_class])
+        return str(self.labels[str(y_class)])
    
 
