@@ -61,5 +61,3 @@ class ASLPredictor:
         return str(self.labels[y_class])
    
 
-c = ASLPredictor()
-c.predict()
