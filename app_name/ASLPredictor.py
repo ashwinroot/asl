@@ -52,7 +52,7 @@ class ASLPredictor:
             img = np.asarray(np.resize(image,(1,64,64,3)))
             probabilities = self.model.predict(img)
             y_classes = probabilities.argmax(axis=-1)
-            print(image_files + "-> " str(y_classes))
+            print(image_files + "-> "+str(y_classes))
 
     def predict(self,image):
         img = np.asarray(np.resize(image,(1,64,64,3)))
