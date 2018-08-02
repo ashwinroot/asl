@@ -4,6 +4,7 @@ from keras.models import Sequential
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import model_from_json
 from keras.preprocessing import image
+import cv2
 import numpy as np
 import os
 
@@ -45,12 +46,12 @@ class ASLPredictor:
         # nb_samples = len(filenames) 
         # print("testing : " + str(nb_samples))  
         for image_files in os.listdir(image_dir):
-           image = cv2.imread(image_dir + '/' + image_files):
+           image = cv2.imread(image_dir + '/' + image_files)
            if image is not None:
             img = np.asarray(np.resize(image,(1,64,64,3)))
             probabilities = self.model.predict(img)
             y_classes = probabilities.argmax(axis=-1)
-            print(image_files + "-> " str(y_classes))
+            print(image_files + "-> " + str(y_classes))
    
 
 c = ASLPredictor()
