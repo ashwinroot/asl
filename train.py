@@ -11,7 +11,6 @@ set_random_seed(2)
 # Imports to view data
 import cv2
 from glob import glob
-from matplotlib import pyplot as plt
 from numpy import floor
 import random
 

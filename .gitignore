@@ -3,3 +3,4 @@
 *.zip
 asl-alphabet/.DS_Store
 .DS_Store
+*.pyc
