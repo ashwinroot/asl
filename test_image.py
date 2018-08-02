@@ -5,6 +5,7 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.models import model_from_json
 from keras.preprocessing import image
 import numpy as np
+import os
 
 data_dir = "input/asl_alphabet_train"
 target_size = (64, 64)
@@ -16,17 +17,17 @@ batch_size = 64
 class ASLPredictor:
     def __init__(self):
         # load json and create model
-        json_file = open('model_self.json', 'r')
+        json_file = open('models/self/model_self.json', 'r')
         loaded_model_json = json_file.read()
         json_file.close()
         self.model = model_from_json(loaded_model_json)
         # load weights into new model
-        self.model.load_weights("model_self.h5")
+        self.model.load_weights("models/self/model_self.h5")
         self.model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=["accuracy"])
         print("Loaded model from disk")
     
     def predict(self):
-        image_dir = "input/asl_alphabet_test/test/A_test.jpg"
+        image_dir = "input/asl_alphabet_test/test"
         # img = image.load_img(image_dir, target_size=target_size)
         # test_datagen = ImageDataGenerator(rescale=1./255)
         # test_generator = test_datagen.flow_from_directory(test_dir,target_size=target_size,color_mode="rgb",
@@ -43,12 +44,13 @@ class ASLPredictor:
         # filenames = test_generator.filenames
         # nb_samples = len(filenames) 
         # print("testing : " + str(nb_samples))  
-        img = image.load_img(image_dir,target_size=(64,64,3))  
-        img = np.asarray(np.resize(img,(1,64,64,3)))
-        probabilities = self.model.predict(img)
-        print(probabilities)
-        y_classes = probabilities.argmax(axis=-1)
-        print(y_classes)
+        for image_files in os.listdir(image_dir):
+           image = cv2.imread(image_dir + '/' + image_files):
+           if image is not None:
+            img = np.asarray(np.resize(image,(1,64,64,3)))
+            probabilities = self.model.predict(img)
+            y_classes = probabilities.argmax(axis=-1)
+            print(image_files + "-> " str(y_classes))
    
 
 c = ASLPredictor()
