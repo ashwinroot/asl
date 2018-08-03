@@ -18,7 +18,7 @@ batch_size = 64
 class ASLPredictor:
     def __init__(self):
         # load json and create model
-        json_file = open('../.../models/model_self.json', 'r')
+        json_file = open('../models/model_self.json', 'r')
         loaded_model_json = json_file.read()
         json_file.close()
         self.model = model_from_json(loaded_model_json)
