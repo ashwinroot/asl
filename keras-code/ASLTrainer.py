@@ -38,14 +38,7 @@ from sklearn import model_selection
 from sklearn.model_selection import train_test_split, learning_curve,KFold,cross_val_score,StratifiedKFold
 from sklearn.utils import class_weight
 from sklearn.metrics import confusion_matrix
-#from imblearn.over_sampling import RandomOverSampler
-#from imblearn.under_sampling import RandomUnderSampler
-#from keras.applications.mobilenet import MobileNet
-#from sklearn.metrics import roc_auc_score
-#from sklearn.metrics import roc_curve
-#from sklearn.metrics import auc
-#import warnings
-#warnings.filterwarnings("ignore")
+
 
 imageSize =64
 train_dir = "input/asl_alphabet_train/"
@@ -123,7 +116,6 @@ def get_data(folder):
                 img_file = cv2.imread(folder + folderName + '/' + image_filename)
                 if img_file is not None:
                     img_arr = np.resize(np.asarray(img_file), (imageSize, imageSize, 3))
-#                     img_arr = np.asarray(img_file)
                     X.append(img_arr)
                     y.append(label)
     X = np.asarray(X)
