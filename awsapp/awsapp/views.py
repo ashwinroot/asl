@@ -1,4 +1,4 @@
-from app_name import app
+from awsapp import app
 
 from flask import render_template
 from flask import Flask, request, Response

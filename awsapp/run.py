@@ -1,4 +1,4 @@
-from app_name import app
+from awsapp import app
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
